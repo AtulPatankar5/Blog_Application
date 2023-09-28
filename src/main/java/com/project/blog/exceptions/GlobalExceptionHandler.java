@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -41,5 +40,12 @@ public class GlobalExceptionHandler {
 			resp.put(fieldName, message);
 		});
 		return new ResponseEntity<Map<String, String>>(resp, HttpStatus.BAD_REQUEST);
+	}
+
+	@ExceptionHandler(APIException.class)
+	public ResponseEntity<APIResponse> APIExceptionHandler(APIException ex) {
+		String message = ex.getMessage();
+		APIResponse apiResponse = new APIResponse(message, true);
+		return new ResponseEntity<APIResponse>(apiResponse, HttpStatus.BAD_REQUEST);
 	}
 }

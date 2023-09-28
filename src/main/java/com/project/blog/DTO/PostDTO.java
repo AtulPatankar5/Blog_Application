@@ -1,13 +1,11 @@
 package com.project.blog.DTO;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
-import com.project.blog.entities.Category;
-import com.project.blog.entities.User;
+import com.project.blog.entities.Comment;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,6 +18,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class PostDTO {
 
+	private Integer id;
+	
 	@NotEmpty
 	private String title;
 
@@ -33,4 +33,8 @@ public class PostDTO {
 	private CategoryDTO category;
 
 	private UserDTO user;
+	
+	private Set<CommentDTO> comments = new HashSet<>();
+
+	
 }

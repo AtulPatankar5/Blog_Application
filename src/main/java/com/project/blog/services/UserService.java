@@ -6,6 +6,7 @@ import com.project.blog.DTO.UserDTO;
 
 public interface UserService {
 
+	
 	UserDTO addUser(UserDTO user);
 
 	UserDTO updateUser(UserDTO user, Integer userID);
@@ -15,4 +16,6 @@ public interface UserService {
 	List<UserDTO> getAllUsers();
 
 	void deleteUser(Integer UserId);
+
+	UserDTO registerUser(UserDTO  user);
 }

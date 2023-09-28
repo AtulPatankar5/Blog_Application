@@ -1,5 +1,8 @@
 package com.project.blog.DTO;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
@@ -25,6 +28,7 @@ public class UserDTO {
 	@Email(message = "EMail address is invalid")
 	private String email;
 
+
 	@NotEmpty()
 	@Size(min=3, max=10, message = "size should be within 3-10")
 //	@Pattern(regexp = "")
@@ -34,4 +38,6 @@ public class UserDTO {
 	@Size(min=10,message = "Length should be minumum 10 character")
 	private String about;
 
+	
+	private Set<RoleDTO> roles = new HashSet<>();
 }
